@@ -101,6 +101,8 @@ GEM
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -108,6 +110,9 @@ GEM
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.6.0)
     irb (1.8.3)
       rdoc
@@ -125,12 +130,13 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.1.2)
     mysql2 (0.5.5)
-    net-imap (0.4.1)
+    net-imap (0.4.2)
       date
       net-protocol
     net-pop (0.1.2)
@@ -142,6 +148,7 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
+    pagy (6.1.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -218,6 +225,10 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    view_component (3.6.0)
+      activesupport (>= 5.2.0, < 8.0)
+      concurrent-ruby (~> 1.0)
+      method_source (~> 1.0)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -239,9 +250,12 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
+  faker (~> 3.2)
   importmap-rails
+  inline_svg (~> 1.9)
   jbuilder
   mysql2 (~> 0.5)
+  pagy (~> 6.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
   selenium-webdriver
@@ -250,6 +264,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
+  view_component (~> 3.6)
   web-console
 
 RUBY VERSION
