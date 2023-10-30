@@ -2,7 +2,7 @@
   <div data-controller="turbo-modal"
       data-action="turbo:submit-end->turbo-modal#submitEnd"
       data-turbo-modal-target="modal" 
-      class="fixed absolute top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" 
+      class="absolute top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" 
       aria-labelledby="modal-title" 
       role="dialog" 
       aria-modal="true"
@@ -23,14 +23,14 @@
           data-transition-leave-start="opacity-100 translate-y-0 sm:scale-100"
         data-transition-leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
         <!-- aca determinamos el tamano del modal -->
-        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all  sm:my-8 w-full md:w-3/4">
+        <div class="relative transform rounded-lg bg-white text-left shadow-xl transition-all  sm:my-8 w-full md:w-3/4">
           <div class="bg-white px-4 pb-4 pt-1 sm:p-4 w-full">
             <div class="sm:flex sm:items-start w-full">
             <!-- Modal content -->
               <div class="mt-1 sm:ml-4 md:ml-2 sm:mt-0 sm:text-left w-full">
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-2 border-b rounded-t dark:border-gray-600">
-                  <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title"><%= @title %></h3>
+                  <h3 class="text-2xl font-semibold leading-6 text-gray-900" id="modal-title"><%= @title %></h3>
                   <button type="button"
                     data-action="turbo-modal#hideModal" 
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="defaultModal">
