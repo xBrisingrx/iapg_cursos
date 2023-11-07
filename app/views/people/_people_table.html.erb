@@ -1,0 +1,34 @@
+<%= turbo_frame_tag "table" do %>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th id="people-team" scope="col" class="text-left px-6 py-3 relative">
+              CUIL
+          </th>
+          <th id="people-seasons" scope="col" class="text-left px-6 py-3 relative">
+            Apellido
+          </th>
+          <th id="people-name" scope="col" class="text-left px-6 py-3 relative">
+            Nombre
+          </th>
+          <th id="people-name" scope="col" class="text-left px-6 py-3 relative">
+            Celular
+          </th>
+          <th id="people-name" scope="col" class="text-left px-6 py-3 relative">
+            Email
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+        <tbody id="people_table_body">
+          <%= render @people %>
+        </tbody>
+    </table>
+  </div>
+  <div class="flex mx-auto mt-2">
+    <%== pagy_nav(@pagy) %>
+  </div>
+<%end%>

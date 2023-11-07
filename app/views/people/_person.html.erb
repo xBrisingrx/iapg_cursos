@@ -1,0 +1,26 @@
+<%= tag.tr id: dom_id(person), class: "person bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100" do %>
+  <td class="py-3 px-6"><%= person.cuil %></td>
+  <td class="py-3 px-6"><%= person.last_name %></td>
+  <td class="py-3 px-6"><%= person.name %></td>
+  <td class="py-3 px-6"><%= person.celphone %></td>
+  <td class="py-3 px-6"><%= person.email %></td>
+  <td class="py-3 px-6 text-center">
+    <div class="flex item-center justify-center">
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to person_path(person), data: { turbo_frame: "modal" } do %>
+            <%= inline_svg_tag('svg/eye') %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to edit_person_path(person), data: { turbo_frame: 'modal' }  do %>
+            <%= inline_svg_tag("svg/edit") %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to modal_disable_person_path(person), data: { turbo_frame: 'modal' }  do %>
+            <%= inline_svg_tag("svg/trash") %>
+          <% end %>
+        </div>
+    </div>
+  </td>
+<% end %>

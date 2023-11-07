@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cuil: MyString
+  last_name: MyString
+  name: MyString
+  birthdate: 1990-08-23
+  phone: MyString
+  celphone: MyString
+  email: MyString
+  direction: MyString
+  code: random
+  province: one
+  city: one
+  active: true
+
+two:
+  cuil: unCuil
+  last_name: MyString
+  name: MyString
+  birthdate: 1993-06-16
+  phone: MyString
+  celphone: MyString
+  email: MyString
+  direction: MyString
+  code: random
+  province: two
+  city: two
+  active: false
