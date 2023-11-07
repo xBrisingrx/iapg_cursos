@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 gem "pagy", "~> 6.1"
 gem "view_component", "~> 3.6"
 gem "inline_svg", "~> 1.9"
+gem "ransack", "~> 4.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
