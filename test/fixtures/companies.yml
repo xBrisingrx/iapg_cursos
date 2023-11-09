@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cuit: 
+  direction: MyString
+  phone: MyString
+  contract: MyString
+  operator: false
+  comment: MyString
+  iva_condition: one
+  company_category: one
+  province: one
+  city: one
+
+two:
+  name: MyString
+  cuit: 
+  direction: MyString
+  phone: MyString
+  contract: MyString
+  operator: false
+  comment: MyString
+  iva_condition: two
+  company_category: two
+  province: two
+  city: two
