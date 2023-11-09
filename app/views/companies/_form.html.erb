@@ -1,34 +1,22 @@
 <%= form_with(model: company, class: "contents") do |form| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
-
-      <ul>
-        <% company.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-2 flex">
+    <%= form.label :cuit, "CUIT", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
+    <%= form.text_field :cuit, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :cuit %>
-    <%= form.text_field :cuit, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-2 flex">
+    <%= form.label :name,"Razón social", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
+    <%= form.text_field :name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :direction %>
-    <%= form.text_field :direction, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-2 flex">
+    <%= form.label :direction,"Dirección", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
+    <%= form.text_field :direction, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :phone %>
-    <%= form.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-2 flex">
+    <%= form.label :phone,"Teléfono", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
+    <%= form.text_field :phone, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
   </div>
 
   <div class="my-5">
@@ -56,17 +44,16 @@
     <%= form.text_field :company_category_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :province_id %>
-    <%= form.text_field :province_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :city_id %>
-    <%= form.text_field :city_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-2 flex">
+    <%= form.label :city_id,"Ciudad ", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
+    <%= form.select(:city_id, @cities.collect { |city| [ "#{city.province.name} - #{city.name}", city.id ]}, { include_blank: true },
+                    data: { controller: "tselect"},
+                    class: "w-3/5 sm:w-6/12 inline-block rounded-sm cursos-pointer focus:inline-none",
+                    placeholder: "Seleccione una ciudad") %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Registrar", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <button type="button" data-action="click->turbo-modal#hideModal" class="rounded-lg py-3 px-5 bg-red-600 text-white inline-block font-medium cursor-pointer">Cancelar</button>
   </div>
 <% end %>

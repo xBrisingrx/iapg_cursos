@@ -1,62 +1,24 @@
-<div id="<%= dom_id company %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= company.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cuit:</strong>
-    <%= company.cuit %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Direction:</strong>
-    <%= company.direction %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Phone:</strong>
-    <%= company.phone %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Contract:</strong>
-    <%= company.contract %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Operator:</strong>
-    <%= company.operator %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Comment:</strong>
-    <%= company.comment %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Iva condition:</strong>
-    <%= company.iva_condition_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Company category:</strong>
-    <%= company.company_category_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Province:</strong>
-    <%= company.province_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">City:</strong>
-    <%= company.city_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this company", company, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this company", edit_company_path(company), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<%= tag.tr id: dom_id(company), class: "company bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100" do %>
+  <td class="py-3 px-6"><%= company.cuit %></td>
+  <td class="py-3 px-6"><%= company.name %></td>
+  <td class="py-3 px-6"><%= company.sector.name %></td>
+  <td class="py-3 px-6 text-center">
+    <div class="flex item-center justify-center">
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to company_path(company), data: { turbo_frame: "modal" } do %>
+            <%= inline_svg_tag('svg/eye') %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to edit_company_path(company), data: { turbo_frame: 'modal' }  do %>
+            <%= inline_svg_tag("svg/edit") %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to modal_disable_company_path(company), data: { turbo_frame: 'modal' }  do %>
+            <%= inline_svg_tag("svg/trash") %>
+          <% end %>
+        </div>
+    </div>
+  </td>
+<% end %>
