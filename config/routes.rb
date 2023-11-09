@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sectors
   resources :companies
   resources :company_categories
   resources :iva_conditions
