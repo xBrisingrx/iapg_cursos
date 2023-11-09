@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :companies
+  resources :company_categories
+  resources :iva_conditions
   resources :people do 
     get "list", on: :collection
     get "modal_disable", on: :member
