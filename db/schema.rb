@@ -64,8 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_155303) do
     t.string "last_name", limit: 50, null: false
     t.string "name", limit: 50, null: false
     t.date "birthdate", null: false
-    t.string "phone", limit: 20, null: false
-    t.string "celphone", limit: 20, null: false
+    t.string "phone", limit: 50, null: false
+    t.string "celphone", limit: 50, null: false
     t.string "email", limit: 50, null: false
     t.string "direction", limit: 100, null: false
     t.string "code", limit: 6
