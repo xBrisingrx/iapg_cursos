@@ -5,8 +5,8 @@ class CreatePeople < ActiveRecord::Migration[7.1]
       t.string :last_name, null: false, limit: 50
       t.string :name, null: false, limit: 50
       t.date :birthdate, null: false
-      t.string :phone, limit: 20, null: false
-      t.string :celphone, limit: 20, null: false
+      t.string :phone, limit: 50, null: false
+      t.string :celphone, limit: 50, null: false
       t.string :email, null: false, limit: 50
       t.string :direction, limit: 100, null: false
       t.string :code, limit: 6
