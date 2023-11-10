@@ -1,22 +1,23 @@
-<div id="<%= dom_id iva_condition %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= iva_condition.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= iva_condition.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Active:</strong>
-    <%= iva_condition.active %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this iva condition", iva_condition, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this iva condition", edit_iva_condition_path(iva_condition), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+<%= tag.tr id: dom_id(iva_condition), class: "iva_condition bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100" do %>
+  <td class="py-3 px-6"><%= iva_condition.name %></td>
+  <td class="py-3 px-6"><%= iva_condition.description %></td>
+  <td class="py-3 px-6 text-center">
+    <div class="flex item-center justify-center">
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to iva_condition_path(iva_condition), data: { turbo_frame: "modal" } do %>
+            <%= inline_svg_tag('svg/eye') %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%= link_to edit_iva_condition_path(iva_condition), data: { turbo_frame: 'modal' }  do %>
+            <%= inline_svg_tag("svg/edit") %>
+          <% end %>
+        </div>
+        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+          <%# link_to modal_disable_iva_condition_path(iva_condition), data: { turbo_frame: 'modal' }  do %>
+            <%# inline_svg_tag("svg/trash") %>
+          <%# end %>
+        </div>
+    </div>
+  </td>
+<% end %>

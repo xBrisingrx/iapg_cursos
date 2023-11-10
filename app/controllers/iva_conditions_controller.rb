@@ -3,7 +3,9 @@ class IvaConditionsController < ApplicationController
 
   # GET /iva_conditions or /iva_conditions.json
   def index
-    @iva_conditions = IvaCondition.all
+    @q = IvaCondition.ransack(params[:q])
+    @pagy, @iva_conditions = pagy( @q.result )
+    @iva_condition = IvaCondition.new
   end
 
   # GET /iva_conditions/1 or /iva_conditions/1.json
@@ -25,6 +27,14 @@ class IvaConditionsController < ApplicationController
 
     respond_to do |format|
       if @iva_condition.save
+        flash.now[:notice] = "Condicion de IVA registrada"
+        format.turbo_stream {
+          render turbo_stream: [
+            turbo_stream.prepend("iva_conditions_table", partial: "iva_conditions/iva_condition", locals: { iva_condition: @iva_condition }),
+            turbo_stream.replace("iva_condition_form", partial: "iva_conditions/form", locals: { iva_condition: IvaCondition.new }),
+            turbo_stream.replace("notifications", partial: "shared/notifications")
+          ]
+        }
         format.html { redirect_to iva_condition_url(@iva_condition), notice: "Iva condition was successfully created." }
         format.json { render :show, status: :created, location: @iva_condition }
       else

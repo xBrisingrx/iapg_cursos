@@ -1,14 +1,58 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Iva conditions</h1>
-    <%= link_to "New iva condition", new_iva_condition_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+<%= render ModalComponent.new(title: "Condiciones de IVA") do %>
+  <div class="flex justify-between">
+    <%= turbo_frame_tag "iva_condition_form" do %>
+      <%= form_with(model: @iva_condition, class: "contents") do |form| %>
+        <%= form.text_field :name,
+          placeholder: "Condición", 
+          class: "shadow rounded-md border border-gray-200 outline-none px-3 py-1 w-1/4" %>
+        <%= form.text_field :description, 
+          placeholder: "Descripción",
+          class: "shadow rounded-md border border-gray-200 outline-none px-3 py-1 ml-2 w-1/3" %>
+        <%= form.submit "Registrar", class: "rounded-lg py-1 px-3 ml-2 bg-pink-500 text-white inline-block font-medium cursor-pointer" %>
+      <% end %>
+    <% end %>
+    <div>
+      <%= search_form_for @q, method: :get, data: { controller: "filter-form", filter_form_target: "form", turbo_frame: "iva_conditions_table" } do |form| %>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <%= inline_svg_tag("svg/search", class: "w-4 h-4 text-gray-500 dark:text-gray-400") %>
+          </div>
+          <%= form.search_field :name_cont,
+            placeholder: "Buscar...",
+            class: "block p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+            autocomplete: "off",
+            data: { action: "input->filter-form#search" }
+          %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div id="iva_conditions" class="min-w-full">
-    <%= render @iva_conditions %>
+  <div id="iva_conditions" class="min-w-full mt-2">
+    <%= turbo_frame_tag "iva_conditions_table" do %>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th id="iva-conditions-name" scope="col" class="text-left px-6 py-3 relative">
+                  Condición
+              </th>
+              <th id="iva-conditions-descrioption" scope="col" class="text-left px-6 py-3 relative">
+                Descripción
+              </th>
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Acciones
+              </th>
+            </tr>
+          </thead>
+            <tbody id="iva_conditions_table_body">
+              <%= render @iva_conditions %>
+            </tbody>
+        </table>
+      </div>
+      <div class="flex mx-auto mt-2">
+        <%== pagy_nav(@pagy) %>
+      </div>
+    <%end%>
   </div>
-</div>
+<%end%>
