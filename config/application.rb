@@ -29,5 +29,7 @@ module IapgCursos
         ENV[key.to_s] = value
       end if File.exist?(env_file)
     end
+    # available languages
+    config.i18n.default_locale = :es
   end
 end
