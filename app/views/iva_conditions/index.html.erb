@@ -1,4 +1,4 @@
-<%= render ModalComponent.new(title: "Condiciones de IVA") do %>
+<%= render ModalComponent.new(title: "Condiciones de IVA", submitEnd: '') do %>
   <div class="flex justify-between">
     <%= turbo_frame_tag "iva_condition_form" do %>
       <%= form_with(model: @iva_condition, class: "contents") do |form| %>
