@@ -30,7 +30,7 @@ class IvaConditionsController < ApplicationController
         flash.now[:notice] = "Condicion de IVA registrada"
         format.turbo_stream {
           render turbo_stream: [
-            turbo_stream.prepend("iva_conditions_table", partial: "iva_conditions/iva_condition", locals: { iva_condition: @iva_condition }),
+            turbo_stream.prepend("iva_conditions_table_body", partial: "iva_conditions/iva_condition", locals: { iva_condition: @iva_condition }),
             turbo_stream.replace("iva_condition_form", partial: "iva_conditions/form", locals: { iva_condition: IvaCondition.new }),
             turbo_stream.replace("notifications", partial: "shared/notifications")
           ]
