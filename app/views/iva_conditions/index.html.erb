@@ -38,7 +38,11 @@
             </tr>
           </thead>
             <tbody id="iva_conditions_table_body">
-              <%= render @iva_conditions %>
+              <% if @iva_conditions.count > 0 %>
+                <%= render @iva_conditions %>
+              <% else %>
+                <%= render 'shared/not_found' %>
+              <% end %>
             </tbody>
         </table>
       </div>

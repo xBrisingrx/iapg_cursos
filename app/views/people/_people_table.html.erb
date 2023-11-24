@@ -24,7 +24,11 @@
         </tr>
       </thead>
         <tbody id="people_table_body">
-          <%= render @people %>
+          <% if @people.count > 0 %>
+            <%= render @people %>
+          <% else %>
+            <%= render 'shared/not_found' %>
+          <% end %>
         </tbody>
     </table>
   </div>

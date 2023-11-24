@@ -2,41 +2,49 @@
   <div class="my-2 flex">
     <%= form.label :cuil, "CUIL", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :cuil, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:cuil, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :last_name,"Apellido", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :last_name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:last_name, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :name,"Nombre",class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :name, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    
   </div>
-
+  <%# inline_error_for(:name, person) %>
   <div class="my-2 flex">
     <%= form.label :birthdate,"Fecha de nacimiento", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
-    <%= form.text_field :birthdate, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%= form.date_field :birthdate, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:birthdate, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :phone,"Teléfono", class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :phone, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:phone, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :celphone,"Celular",class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :celphone, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:celphone, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :email,"Email",class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :email, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:email, person) %>
   </div>
 
   <div class="my-2 flex">
     <%= form.label :direction,"Dirección",class: "md:text-left w-3/12 sm:w-2/12 2xl:w-1/12 flex content-center" %>
     <%= form.text_field :direction, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-3/5 sm:w-6/12" %>
+    <%# inline_error_for(:direction, person) %>
   </div>
 
   <div class="my-2 flex">

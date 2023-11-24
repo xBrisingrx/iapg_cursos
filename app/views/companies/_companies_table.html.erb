@@ -19,7 +19,11 @@
         </tr>
       </thead>
         <tbody id="companies_table_body">
+        <% if @companies.count > 0 %>
           <%= render @companies %>
+        <% else %>
+          <%= render 'shared/not_found' %>
+        <% end %>
         </tbody>
     </table>
   </div>

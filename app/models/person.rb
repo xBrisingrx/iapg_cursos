@@ -26,7 +26,7 @@ class Person < ApplicationRecord
   def fullname
     "#{self.last_name} #{self.name}"
   end
-  private
+  # private
   def set_province
     province = Province.find(self.city.province.id)
     self.province = province

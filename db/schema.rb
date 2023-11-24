@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_09_155303) do
   create_table "cities", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "name", limit: 40, null: false
+    t.string "name"
     t.bigint "province_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,13 +59,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_155303) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "localidades", id: :integer, charset: "utf8mb3", collation: "utf8mb3_spanish_ci", force: :cascade do |t|
+    t.string "dane", limit: 50, null: false
+    t.integer "province_id", null: false
+    t.date "created_at", default: -> { "current_timestamp()" }, null: false
+    t.date "updated_at", default: -> { "current_timestamp()" }, null: false
+  end
+
   create_table "people", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "cuil", limit: 20, null: false
     t.string "last_name", limit: 50, null: false
     t.string "name", limit: 50, null: false
     t.date "birthdate", null: false
-    t.string "phone", limit: 50, null: false
-    t.string "celphone", limit: 50, null: false
+    t.string "phone", limit: 20, null: false
+    t.string "celphone", limit: 20, null: false
     t.string "email", limit: 50, null: false
     t.string "direction", limit: 100, null: false
     t.string "code", limit: 6
@@ -78,8 +85,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_155303) do
     t.index ["province_id"], name: "index_people_on_province_id"
   end
 
+  create_table "personas", id: :integer, charset: "utf8mb3", collation: "utf8mb3_spanish_ci", force: :cascade do |t|
+    t.string "cuil", limit: 13, null: false
+    t.string "last_name", limit: 50, null: false
+    t.string "name", limit: 50, null: false
+    t.date "birthdate", null: false
+    t.string "phone", limit: 30, null: false
+    t.string "celphone", limit: 30, null: false
+    t.string "email", limit: 50, null: false
+    t.string "direction", limit: 100, null: false
+    t.integer "city_id"
+    t.string "code", limit: 4
+    t.date "created_at", default: -> { "current_timestamp()" }, null: false
+    t.date "updated_at", default: -> { "current_timestamp()" }, null: false
+    t.index ["cuil"], name: "cuil", unique: true
+  end
+
   create_table "provinces", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "name", limit: 20, null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
