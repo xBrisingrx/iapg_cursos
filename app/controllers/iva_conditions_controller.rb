@@ -19,6 +19,11 @@ class IvaConditionsController < ApplicationController
 
   # GET /iva_conditions/1/edit
   def edit
+    render turbo_stream: [
+      turbo_stream.replace("iva_condition_form", 
+        partial: "iva_conditions/edit",
+        locals: { iva_condition: @iva_condition, btn_label: "Actualizar" })
+    ]
   end
 
   # POST /iva_conditions or /iva_conditions.json
@@ -30,8 +35,8 @@ class IvaConditionsController < ApplicationController
         flash.now[:notice] = "Condicion de IVA registrada"
         format.turbo_stream {
           render turbo_stream: [
-            turbo_stream.prepend("iva_conditions_table_body", partial: "iva_conditions/iva_condition", locals: { iva_condition: @iva_condition }),
-            turbo_stream.replace("iva_condition_form", partial: "iva_conditions/form", locals: { iva_condition: IvaCondition.new }),
+            turbo_stream.prepend("iva_conditions_table_body", partial: "iva_conditions/iva_condition", locals: { iva_condition: @iva_condition, btn_label: "Registrar" }),
+            turbo_stream.replace("iva_condition_form", partial: "iva_conditions/form", locals: { iva_condition: IvaCondition.new, btn_label: "Registrar" }),
             turbo_stream.replace("notifications", partial: "shared/notifications")
           ]
         }
@@ -48,6 +53,14 @@ class IvaConditionsController < ApplicationController
   def update
     respond_to do |format|
       if @iva_condition.update(iva_condition_params)
+        flash.now[:notice] = "Condicion de IVA actualizada"
+        format.turbo_stream {
+          render turbo_stream: [
+            turbo_stream.replace(@iva_condition),
+            turbo_stream.replace("iva_condition_form", partial: "iva_conditions/form", locals: { iva_condition: IvaCondition.new, btn_label: "Registrar" }),
+            turbo_stream.replace("notifications", partial: "shared/notifications")
+          ]
+        }
         format.html { redirect_to iva_condition_url(@iva_condition), notice: "Iva condition was successfully updated." }
         format.json { render :show, status: :ok, location: @iva_condition }
       else
