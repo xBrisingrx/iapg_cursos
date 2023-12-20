@@ -69,6 +69,7 @@ class CompaniesController < ApplicationController
       @cities = City.all.includes(:province)
       @sectors = Sector.actives
       @categories = CompanyCategory.actives
+      @iva_conditions = IvaCondition.actives
     end
 
     # Only allow a list of trusted parameters through.
