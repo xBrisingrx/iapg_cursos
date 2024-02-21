@@ -12,6 +12,7 @@ one:
   company_category: one
   province: one
   city: one
+  sector_id: one
 
 two:
   name: MyString
@@ -25,3 +26,4 @@ two:
   company_category: two
   province: two
   city: two
+  sector_id: two

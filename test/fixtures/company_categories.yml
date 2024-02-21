@@ -6,7 +6,6 @@ one:
   is_partner: false
   description: MyString
   active: false
-  sector_id: one
 
 two:
   name: MyString
@@ -14,4 +13,3 @@ two:
   is_partner: false
   description: MyString
   active: false
-  sector_id: two
