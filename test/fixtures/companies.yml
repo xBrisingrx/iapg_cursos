@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  cuit: 
+  cuit: 990099
   direction: MyString
   phone: MyString
   contract: MyString
@@ -15,7 +15,7 @@ one:
 
 two:
   name: MyString
-  cuit: 
+  cuit: 111111
   direction: MyString
   phone: MyString
   contract: MyString
